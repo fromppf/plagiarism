@@ -20,8 +20,6 @@ pip3 install -r requirements.txt
 To search for plagiated documents:
 
 ```bash
-main.py localfile.docx
-main.py localfile.html
 main.py localfile.pdf
 main.py localfile.txt
 main.py http://example.ru/somefile.txt
@@ -32,14 +30,33 @@ Press Ctrl-C to skip any file you don't want to test
 
 Notice, that somefile.txt must have 'utf-8' encoding.
 
+Or you can use it as a package:
+
+```python
+from plagiarism import checkfile
+
+checkfile('localfile.pdf')
+```
+
 Chinese documents expected.
 
 
-#### TODO
+#### FEATURE
 
-* [x] support Word 97 (`.doc`) files
-* [x] support Rich Text Format (`.rtf`) files
-* [ ] finish `spider.py`
+- [x] Keywords extraction by TF-IDF
+- [x] Plagiarism detection by Levenshtein Distance
+- [x] Support reading file from local filesystem
+- [x] Support reading file from network
+- [ ] Support China Academic Journals (`.caj`) files
+- [x] Support Microsoft Office Word 97 (`.doc`) files
+- [x] Support Office Open XML Document (`.docx`) files
+- [x] Support HyperText Markup Language (`.html`) files
+- [x] Support Portable Document Format (`.pdf`) files
+- [x] Support Rich Text Format (`.rtf`) files
+- [x] Support Text File (`.txt`) files
+- [ ] Search related papers from Internet
+- [x] As a python package
+- [x] As a script
 
 
 #### Attention
