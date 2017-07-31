@@ -8,11 +8,11 @@ from pdfminer.pdfinterp import PDFResourceManager, process_pdf
 
 import jieba
 import jieba.analyse
-import Levenshtein
+from Levenshtein import seqratio
 
 from spider import download
 
-def _parse_docx_table(table, text = ''):
+def _parse_docx_table(table, text=''):
     for row in table.rows:
         for cell in row.cells:
             text += '\n\n'.join([
@@ -90,7 +90,7 @@ def evaluate(text1, text2):
     blocks = []
     for s in text1s:
         for t in text2s:
-            res = Levenshtein.seqratio(s, t)
+            res = seqratio(s, t)
             if res > threshold:
                 blocks.append({'plagiarized': res, 'input': s, 'origin': t})
 

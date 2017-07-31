@@ -23,14 +23,14 @@ def checkfile(file):
     # search by keywords
     results = search(keywords).results()
 
-    if len(results) == 0:
+    if not results:
         print('No result.')
         return res
 
     # processing files
     for i, result in enumerate(results):
         try:
-            print('\nProcessing file ', str(i + 1), ': ', result['url'])
+            print('\nProcessing file {0}: {1} ({2})'.format(str(i + 1), result['name'], result['url']))
             text2 = readfile(result['url'])
             if text2 is None:
                 print('This file appears to be invalid')
@@ -44,13 +44,16 @@ def checkfile(file):
         except:
             continue
 
-        if len(blocks) > 0:
-            res['results'].append({
-                'origin': result['url'],
-                'keywords': keywords,
-                'blocks': blocks,
-                'plagiarized': sum(block['plagiarized'] for block in blocks) / len(blocks)
-                })
+        if not blocks:
+            continue
+
+        res['results'].append({
+            'origin': result['url'],
+            'title': result['name'],
+            'keywords': keywords,
+            'blocks': blocks,
+            'plagiarized': sum(block['plagiarized'] for block in blocks) / len(blocks)
+            })
 
     return res
 
