@@ -1,6 +1,12 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""ssk.py By Jatin Gera <https://github.com/jgera>
+
+This module is modified from https://github.com/jgera/plagiarism/blob/master/ssk.py
+
+"""
+
 import math
 
 class SSK:

@@ -1,32 +1,54 @@
 plagiarism
 ==========
 
-Requirements:
-* Python 3.3.1
-* pdfminer3k: https://pypi.python.org/pypi/pdfminer3k/
-* distribute: https://pypi.python.org/pypi/distribute
-* nltk: https://github.com/nltk/nltk/
-* nltk-data (stopwords): http://nltk.org/data.html
-* bs4: http://www.crummy.com/software/BeautifulSoup/
+[![license](https://img.shields.io/github/license/uulm/plagiarism.svg)](https://github.com/uulm/plagiarism/blob/master/LICENSE)
 
-Usage:
+#### Requirements
 
-To search for plagiated documents in google:
+* Python 3.6.2
 
-    main.py localfile.txt
-    main.py localfile.pdf
-    main.py http://example.ru/somefile.txt
-    main.py ftp://example.com/somefile.pdf
-    
+
+#### Installation
+
+```bash
+pip3 install -r requirements.txt
+```
+
+
+#### Usage
+
+To search for plagiated documents:
+
+```bash
+main.py localfile.txt
+main.py localfile.pdf
+main.py http://example.ru/somefile.txt
+main.py ftp://example.com/somefile.pdf
+```
+
 Press Ctrl-C to skip any file you don't want to test
 
-To compare two documents:
-
-    main.py localfile.txt ftp://example.com/somefile.pdf
-    main.py http://example.ru/somefile.txt localfile.pdf
-    main.py localfile1.pdf localfile2.pdf
-
 Notice, that somefile.txt must have 'utf-8' encoding.
-To change encoding search for data.decode('utf-8') in plagiarism.py
 
-English or russian documents expected. For other languages just change global langs variable in main.py
+Chinese documents expected.
+
+
+#### TODO
+
+* [ ] support Word 97 (`.doc`) files
+* [ ] support Rich Text Format (`.rtf`) files
+* [ ] finish `spider.py`
+
+
+#### Attention
+
+The **sample** of `spider.py` use CNKI's kns55 platform to get related papers, though the sample is **unfinished**, abusing the kns55 platform may broke the ToS and EULA of CNKI.
+
+Use these codes **at your own risk**.
+
+
+#### License
+
+This project is licensed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html), for more information, see [LICENSE](LICENSE).
+
+`ssk.py` from [jgera/plagiarism](https://github.com/jgera/plagiarism) is copyrighted to [jgera](https://github.com/jgera).
