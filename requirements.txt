@@ -1,4 +1,6 @@
 beautifulsoup4==4.6.0
+git+https://github.com/kinosang/pyth3.git
+html2text==2016.9.19
 jieba==0.38
 pdfminer3k==1.3.1
 python-docx==0.8.6

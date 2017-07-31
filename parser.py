@@ -8,6 +8,8 @@ import re
 from docx import Document
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFResourceManager, process_pdf
+from pyth.plugins.rtf15.reader import Rtf15Reader
+from pyth.plugins.plaintext.writer import PlaintextWriter
 import html2text
 
 import jieba
@@ -53,7 +55,7 @@ def readfile(file):
         elif file.endswith('.htm') or file.endswith('.html'):
             html = html2text.HTML2Text()
             html.ignore_links = True
-            return html.handle(data)
+            return html.handle(data.read().decode('utf-8'))
         elif file.endswith('.pdf'):
             with StringIO() as outfp:
                 rsrcmgr = PDFResourceManager()
@@ -61,7 +63,9 @@ def readfile(file):
                 process_pdf(rsrcmgr, device, data)
                 return outfp.getvalue()
         elif file.endswith('.rtf'):
-            raise Exception('.rtf files are not supported')
+            with BytesIO() as outfp:
+                document = Rtf15Reader.read(data)
+                return PlaintextWriter.write(document, outfp).getvalue()
         elif file.endswith('.txt'):
             return data.read()
         else:
