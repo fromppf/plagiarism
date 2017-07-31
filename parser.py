@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from io import StringIO, BytesIO
+import string
+import re
+
 from docx import Document
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFResourceManager, process_pdf
@@ -77,6 +80,11 @@ def getkeywords(text):
 
 def getsegments(text):
     try:
-        return jieba.lcut(text, cut_all=False, HMM=False)
+        segments = jieba.lcut(text, cut_all=False, HMM=False)
+
+        remove = u'\s!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏'
+        pattern = re.compile(r"[{}]".format(remove))
+
+        return [s for s in segments if not pattern.match(s)]
     except:
         pass
