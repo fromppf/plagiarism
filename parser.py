@@ -81,7 +81,7 @@ def evaluate(text1, text2):
     text1 = getsegments(text1)
     text2 = getsegments(text2)
 
-    size = 5
+    size = 8
     threshold = 0.5
 
     text1s = [text1[i:i+size] for i in range(0, len(text1), size)]
