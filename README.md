@@ -44,7 +44,7 @@ Chinese documents expected.
 
 #### Attention
 
-The **sample** of `spider.py` use CNKI's kns55 platform to get related papers, though the sample is **unfinished**, abusing the kns55 platform may broke the ToS and EULA of CNKI.
+The **sample** of `spider.py` use CNKI's kns55 platform to get related papers, though the sample is **unfinished**, abusing the kns55 platform may break the ToS and EULA of CNKI.
 
 Use these codes **at your own risk**.
 
