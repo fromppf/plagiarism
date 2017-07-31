@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-
+import timeit
 from Levenshtein import seqratio
 
 from parser import readfile, getkeywords, getsegments
@@ -49,13 +49,18 @@ def checkfile(file, size=7, threshold=0.1):
     for i, result in enumerate(results):
         try:
             print('\nProcessing file {0}: {1} ({2})'.format(str(i + 1), result['name'], result['url']))
+
+            start = timeit.default_timer()
+
             text2 = readfile(result['url'])
             if text2 is None:
                 print('This file appears to be invalid')
                 continue
+
             # get keywords
             keywords2 = getkeywords(text2)
             print('Keywords: ', ', '.join(keywords2))
+
             # compare segments to detect plagiarism blocks
             blocks = evaluate(text, text2, size, threshold)
             print('Search ended, found {0} plagiated blocks'.format(len(blocks)))
@@ -73,10 +78,12 @@ def checkfile(file, size=7, threshold=0.1):
             'plagiarized': sum(block['plagiarized'] for block in blocks) / len(blocks)
             })
 
+        print('File {0} processed in {1} seconds'.format(str(i + 1), timeit.default_timer() - start))
+
     return res
 
 if __name__ == '__main__':
     if len(sys.argv) >= 2:
-        print(checkfile(sys.argv[1]))
+        print('\n', checkfile(sys.argv[1]))
     else:
         raise Exception('No input file specified')
