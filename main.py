@@ -8,12 +8,9 @@ from Levenshtein import seqratio
 from parser import readfile, getkeywords, getsegments
 from spider import search
 
-def evaluate(text1, text2):
+def evaluate(text1, text2, size=7, threshold=0.1):
     text1 = getsegments(text1)
     text2 = getsegments(text2)
-
-    size = 8
-    threshold = 0.1
 
     text1s = [text1[i:i+size] for i in range(0, len(text1), size)]
     text2s = [text2[i:i+size] for i in range(0, len(text2), size)]
@@ -27,7 +24,7 @@ def evaluate(text1, text2):
 
     return blocks
 
-def checkfile(file):
+def checkfile(file, size=7, threshold=0.1):
     res = {'input': file, 'keywords': [], 'results': []}
 
     # read file fulltext
@@ -60,7 +57,7 @@ def checkfile(file):
             keywords2 = getkeywords(text2)
             print('Keywords: ', ', '.join(keywords2))
             # compare segments to detect plagiarism blocks
-            blocks = evaluate(text, text2)
+            blocks = evaluate(text, text2, size, threshold)
             print('Search ended, found {0} plagiated blocks'.format(len(blocks)))
         except:
             continue
