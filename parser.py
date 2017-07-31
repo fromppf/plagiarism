@@ -36,8 +36,12 @@ def readfile(file):
         else:
             data = open(file, 'rb')
 
-        if file.endswith('.caj'):
-            raise Exception('.caj files are not supported')
+        if file.endswith('.caj') or file.endswith('.pdf'):
+            with StringIO() as outfp:
+                rsrcmgr = PDFResourceManager()
+                device = TextConverter(rsrcmgr, outfp)
+                process_pdf(rsrcmgr, device, data)
+                return outfp.getvalue()
         elif file.endswith('.doc'):
             text = ''
             document = olefile.OleFileIO(data)
@@ -114,12 +118,6 @@ def readfile(file):
             html = html2text.HTML2Text()
             html.ignore_links = True
             return html.handle(data.read().decode('utf-8'))
-        elif file.endswith('.pdf'):
-            with StringIO() as outfp:
-                rsrcmgr = PDFResourceManager()
-                device = TextConverter(rsrcmgr, outfp)
-                process_pdf(rsrcmgr, device, data)
-                return outfp.getvalue()
         elif file.endswith('.rtf'):
             with BytesIO() as outfp:
                 document = Rtf15Reader.read(data)
