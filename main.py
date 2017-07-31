@@ -3,8 +3,29 @@
 
 import sys
 
-from parser import readfile, getkeywords, evaluate
+from Levenshtein import seqratio
+
+from parser import readfile, getkeywords, getsegments
 from spider import search
+
+def evaluate(text1, text2):
+    text1 = getsegments(text1)
+    text2 = getsegments(text2)
+
+    size = 8
+    threshold = 0.1
+
+    text1s = [text1[i:i+size] for i in range(0, len(text1), size)]
+    text2s = [text2[i:i+size] for i in range(0, len(text2), size)]
+
+    blocks = []
+    for s in text1s:
+        for t in text2s:
+            res = seqratio(s, t)
+            if res > threshold:
+                blocks.append({'plagiarized': res, 'input': s, 'origin': t})
+
+    return blocks
 
 def checkfile(file):
     res = {'input': file, 'keywords': [], 'results': []}
