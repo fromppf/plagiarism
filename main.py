@@ -73,7 +73,7 @@ def checkfile(file, size=7, threshold=0.1):
         res['results'].append({
             'origin': result['url'],
             'title': result['name'],
-            'keywords': keywords,
+            'keywords': keywords2,
             'blocks': blocks,
             'plagiarized': sum(block['plagiarized'] for block in blocks) / len(blocks)
             })
