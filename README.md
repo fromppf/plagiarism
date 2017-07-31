@@ -50,5 +50,3 @@ Use these codes **at your own risk**.
 #### License
 
 This project is licensed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html), for more information, see [LICENSE](LICENSE).
-
-`ssk.py` from [jgera/plagiarism](https://github.com/jgera/plagiarism) is copyrighted to [jgera](https://github.com/jgera).
