@@ -2,6 +2,7 @@ beautifulsoup4==4.6.0
 git+https://github.com/prechelt/pyth.git@pyth-py3
 html2text==2016.9.19
 jieba==0.38
+olefile==0.44
 pdfminer3k==1.3.1
 python-docx==0.8.6
 python-Levenshtein==0.12.0
