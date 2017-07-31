@@ -37,8 +37,8 @@ Chinese documents expected.
 
 #### TODO
 
-* [ ] support Word 97 (`.doc`) files
-* [ ] support Rich Text Format (`.rtf`) files
+* [x] support Word 97 (`.doc`) files
+* [x] support Rich Text Format (`.rtf`) files
 * [ ] finish `spider.py`
 
 
