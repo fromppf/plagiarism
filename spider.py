@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from time import strftime
-import urllib.request
-import urllib.parse
 from bs4 import BeautifulSoup
+from time import strftime
 import re
+import urllib.parse
+import urllib.request
 
 def download(url, data = None):
     try:

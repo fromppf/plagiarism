@@ -2,14 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from io import StringIO, BytesIO
-import string
 import re
 
 from docx import Document
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFResourceManager, process_pdf
-from pyth.plugins.rtf15.reader import Rtf15Reader
 from pyth.plugins.plaintext.writer import PlaintextWriter
+from pyth.plugins.rtf15.reader import Rtf15Reader
 import html2text
 import olefile
 

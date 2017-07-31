@@ -3,6 +3,7 @@
 
 import sys
 import timeit
+
 from Levenshtein import seqratio
 
 from parser import readfile, getkeywords, getsegments
