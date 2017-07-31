@@ -20,8 +20,10 @@ pip3 install -r requirements.txt
 To search for plagiated documents:
 
 ```bash
-main.py localfile.txt
+main.py localfile.docx
+main.py localfile.html
 main.py localfile.pdf
+main.py localfile.txt
 main.py http://example.ru/somefile.txt
 main.py ftp://example.com/somefile.pdf
 ```

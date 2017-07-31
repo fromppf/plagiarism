@@ -5,6 +5,7 @@ from io import StringIO, BytesIO
 from docx import Document
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFResourceManager, process_pdf
+import html2text
 
 import jieba
 import jieba.analyse
@@ -47,6 +48,10 @@ def readfile(file):
                 text += _parse_docx_table(table, text)
 
             return text
+        elif file.endswith('.htm') or file.endswith('.html'):
+            html = html2text.HTML2Text()
+            html.ignore_links = True
+            return html.handle(data)
         elif file.endswith('.pdf'):
             with StringIO() as outfp:
                 rsrcmgr = PDFResourceManager()
