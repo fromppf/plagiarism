@@ -10,6 +10,8 @@ plagiarism
 
 #### Installation
 
+`python-Levenshtein` may not be installed successfully on Windows, use the whl file from http://www.lfd.uci.edu/~gohlke/pythonlibs/#python-levenshtein.
+
 ```bash
 pip3 install -r requirements.txt
 ```
@@ -47,7 +49,7 @@ Chinese documents expected.
 - [x] Plagiarism detection by Levenshtein Distance
 - [x] Support reading file from local filesystem
 - [x] Support reading file from network
-- [ ] Support China Academic Journals (`.caj`) files
+- [x] Support China Academic Journals (`.caj`) files <sup>*</sup>
 - [x] Support Microsoft Office Word 97 (`.doc`) files
 - [x] Support Office Open XML Document (`.docx`) files
 - [x] Support HyperText Markup Language (`.html`) files
